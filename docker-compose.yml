@@ -1,7 +1,6 @@
 version: "3.9"
-
 services:
-  db:
+  postgres-db:
     image: postgres:latest
     container_name: postgres_db
     environment:
@@ -12,3 +11,17 @@ services:
       - "5433:5432"
     volumes:
       - ./databases/postgreSQL/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./databases/postgreSQL/data:/var/lib/postgresql/data
+  
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./databases/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./databases/mysql/data:/var/lib/mysql
+

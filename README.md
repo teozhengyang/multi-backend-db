@@ -7,3 +7,4 @@ This is a multi-backend database integration project that supports various backe
 ### Progress
 
 - FastAPI + PostgreSQL
+- FastAPI + MySQL
